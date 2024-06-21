@@ -1,12 +1,19 @@
 const inputNoteEl = document.getElementById("input-note")
 const saveBtnEl = document.getElementById("save-btn")
 const noteDisplayEl = document.getElementById("note-display")
+const notesFromLocalStorage = JSON.parse( localStorage.getItem("myJobNotes") )
 let date = new Date();
 let notes = []
 let noteObject = {
     url: "",
     note: "",
     ID: ""
+}
+
+if (notesFromLocalStorage) {
+    notes = notesFromLocalStorage
+    console.log(notes)
+    renderNotes()
 }
 
 saveBtnEl.addEventListener("click", function() {
@@ -27,6 +34,7 @@ saveBtnEl.addEventListener("click", function() {
 
 function addNote(noteObject) {
     notes.push(noteObject)
+    localStorage.setItem("myJobNotes", JSON.stringify(notes))
     clearNoteObject()
     renderNotes()
     inputNoteEl.value = ""
@@ -75,5 +83,6 @@ function renderNotes() {
 
 function removeNote(noteObject) {
     notes = notes.filter(note => note.ID != noteObject.ID);
+    localStorage.setItem("myJobNotes", JSON.stringify(notes));
     renderNotes();
 }
