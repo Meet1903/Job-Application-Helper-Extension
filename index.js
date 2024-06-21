@@ -19,17 +19,24 @@ if (notesFromLocalStorage) {
 saveBtnEl.addEventListener("click", function() {
     let url = ""
     clearNoteObject()
+
+    function addNoteAfterTabQuery(tab) {
+        noteObject.url = tab.url;
+        noteObject.note = inputNoteEl.value;
+        date = new Date();
+        noteObject.ID = date.valueOf();
+
+        console.log(notes);
+        console.log(noteObject);
+        addNote(noteObject);
+    }
+
     if (chrome && chrome.tabs){
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-            noteObject.url = tabs[0].url
+            let tab = tabs[0]
+            addNoteAfterTabQuery(tab);
         })
     }
-    // noteObject.url = "https://www.google.com/"
-    noteObject.note = inputNoteEl.value
-    date = new Date()
-    noteObject.ID = date.valueOf()
-    console.log(notes)
-    addNote(noteObject)
 })
 
 function addNote(noteObject) {
@@ -41,10 +48,7 @@ function addNote(noteObject) {
 }
 
 function clearNoteObject() {
-    noteObject= {
-        url: "",
-        note: ""
-    }
+    noteObject= {}
 }
 
 function renderNotes() {
