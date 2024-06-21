@@ -10,10 +10,6 @@ let noteObject = {
 }
 
 saveBtnEl.addEventListener("click", function() {
-    // noteObjects = nnn.filter(note => note.ID != 1718944229724);
-    // console.log(noteObjects)
-
-
     let url = ""
     clearNoteObject()
     if (chrome && chrome.tabs){
@@ -49,12 +45,21 @@ function renderNotes() {
     notes.map((noteObject) => {
         if (noteObject.note) {
             let newEl = document.createElement("li")
+            
+            let linkEl = document.createElement("span");
+            linkEl.className = "li-link";
+            linkEl.innerHTML = `<a href="${noteObject.url}" target="_blank">Link</a>`;
+
+            let noteContent = document.createElement("span");
+            noteContent.className = "note-content";
+            noteContent.innerHTML = `${noteObject.note}`;
 
             let deleteIcon = document.createElement("span");
-            deleteIcon.textContent = " ❌";
+            deleteIcon.innerHTML = '<i class="fas fa-trash-alt fa-lg"></i>'
             deleteIcon.className = "delete-icon";
-            
-            newEl.innerHTML = `<a href="${noteObject.url}" target="_blank">Link</a> ${noteObject.note}`
+
+            newEl.appendChild(linkEl);
+            newEl.appendChild(noteContent);
             newEl.appendChild(deleteIcon);
 
             deleteIcon.addEventListener("click", function() {
@@ -66,18 +71,6 @@ function renderNotes() {
         }
         
     })
-    // // noteDisplayEl.innerHTML = listItem
-    // let newEl = document.createElement("li")
-    
-    // newEl.innerHTML = `<a href="https://www.google.com/" target="_blank">Link</a> Meet`
-    
-    // newEl.addEventListener("click", function() {
-    //     // let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
-    //     console.log("Yes working")
-    //     // remove(exactLocationOfItemInDB)
-    // })
-
-    // noteDisplayEl.append(newEl)
 }
 
 function removeNote(noteObject) {
