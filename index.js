@@ -1,5 +1,6 @@
 const inputNoteEl = document.getElementById("input-note")
 const saveBtnEl = document.getElementById("save-btn")
+const deleteAllBtnEl = document.getElementById("delete-all-btn")
 const noteDisplayEl = document.getElementById("note-display")
 const notesFromLocalStorage = JSON.parse( localStorage.getItem("myJobNotes") )
 let date = new Date();
@@ -39,6 +40,13 @@ saveBtnEl.addEventListener("click", function() {
     }
 })
 
+deleteAllBtnEl.addEventListener("click", function() {
+    clearNoteObject()
+    clearNotes()
+    localStorage.setItem("myJobNotes", JSON.stringify(notes))
+    renderNotes()
+})
+
 function addNote(noteObject) {
     notes.push(noteObject)
     localStorage.setItem("myJobNotes", JSON.stringify(notes))
@@ -49,6 +57,10 @@ function addNote(noteObject) {
 
 function clearNoteObject() {
     noteObject= {}
+}
+
+function clearNotes() {
+    notes = []
 }
 
 function renderNotes() {
