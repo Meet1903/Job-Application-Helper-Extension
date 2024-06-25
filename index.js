@@ -48,7 +48,7 @@ deleteAllBtnEl.addEventListener("click", function() {
 })
 
 function addNote(noteObject) {
-    notes.push(noteObject)
+    notes.unshift(noteObject)
     localStorage.setItem("myJobNotes", JSON.stringify(notes))
     clearNoteObject()
     renderNotes()
