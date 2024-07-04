@@ -46,10 +46,14 @@ saveBtnEl.addEventListener("click", function() {
 })
 
 deleteAllBtnEl.addEventListener("click", function() {
-    clearNoteObject()
-    clearNotes()
-    localStorage.setItem("myJobNotes", JSON.stringify(notes))
-    renderNotes()
+    const userConfirmed = confirm('Are you sure you want to delete all entries? This action cannot be undone.');
+    if (userConfirmed) {
+        clearNoteObject()
+        clearNotes()
+        localStorage.setItem("myJobNotes", JSON.stringify(notes))
+        renderNotes()
+    }
+    
 })
 
 function addNote(noteObject) {
