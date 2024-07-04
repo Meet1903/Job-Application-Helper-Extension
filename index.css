@@ -7,13 +7,12 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
 }
 
 #input-note {
     padding: 10px;
     border: 1px solid #c8ac1e;
-    margin-bottom: 4px;
     height: 20px;
     font-size: 15px;
     font-family: Courier New;
@@ -23,6 +22,8 @@ body {
 .button-container {
     display: flex;
     gap: 10px;
+    padding-top: 10px;
+    margin-bottom: 0px;
 }
 
 .button-container button {
@@ -52,6 +53,7 @@ ul {
     list-style: none;
     padding-left: 0px;
     width: 100%;
+    margin-top: 0px;
     overflow: none;
     text-align: left;
 }
