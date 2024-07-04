@@ -3,6 +3,11 @@ const saveBtnEl = document.getElementById("save-btn")
 const deleteAllBtnEl = document.getElementById("delete-all-btn")
 const noteDisplayEl = document.getElementById("note-display")
 const notesFromLocalStorage = JSON.parse( localStorage.getItem("myJobNotes") )
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('input-note').focus();
+})
+
 let date = new Date();
 let notes = []
 let noteObject = {
