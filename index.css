@@ -71,6 +71,12 @@ ul li {
     border-radius: 5px;
 }
 
+ul li:hover {
+    background-color: #d4e8d4; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+}
+
+
 ul li a {
     margin-right: 10px;
 }
