@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "version": "2.3",
+    "version": "2.4",
     "name": "Job Application Helper",
     "action": {
         "default_popup": "index.html",

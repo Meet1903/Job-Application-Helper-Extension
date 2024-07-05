@@ -68,6 +68,7 @@ ul li {
     align-items: center;
     text-align: left;
     word-wrap: break-word;
+    border-radius: 5px;
 }
 
 ul li a {
